@@ -58,8 +58,7 @@
                                     <a class="dropdown-item" href="{{route('cc_index')}}">
                                         List
                                     </a>
-                                    {{-- @if(Auth::user()->role >= 10) --}}
-                                     @if(Auth::user())
+                                    @if(Auth::user()->role >= 10)
                                         <a class="dropdown-item" href="{{route('cc_create')}}">
                                             Add new
                                         </a>

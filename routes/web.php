@@ -29,8 +29,8 @@ Route::get('/companies/show/{id}', [CC::class, 'show'])->name('cc_show');
 
 Route::get('/employees', [EC::class, 'index'])->name('ec_index');
 Route::get('/employees/create', [EC::class, 'create'])->name('ec_create');
-Route::post('/employees/show', [EC::class, 'show'])->name('ec_store');
-Route::get('/employees/edit/{employeeId}', [EC::class, 'edit'])->name('ec_edit');
+Route::post('/employees/store', [EC::class, 'store'])->name('ec_store');
+Route::get('/employees/edit/{employee}', [EC::class, 'edit'])->name('ec_edit');
 Route::put('/employees/{employee}', [EC::class, 'update'])->name('ec_update');
 Route::delete('/employees/{employee}', [EC::class, 'destroy'])->name('ec_delete');
 Route::get('/employees/show/{id}', [EC::class, 'show'])->name('ec_show');

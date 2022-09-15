@@ -103,8 +103,11 @@ class CompanyController extends Controller
      */
     public function destroy(C $company)
     {
-        $company->delete();
-
-        return redirect()->route('cc_index')->with('deleted', 'Bye bye, I kill you!');  
+      
+        if (!$company->employee->count()) {
+            $company->delete();
+            return redirect()->route('cc_index')->with('deleted', 'Bye bye, I kill you!');
+        }
+        return redirect()->back()->with('deleted', 'This company can not be killed!');
     }
 }

@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('first name', 50);
-            $table->string('last name', 50);
-            $table->string('company', 50);
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->string('email', 50)->nullable();

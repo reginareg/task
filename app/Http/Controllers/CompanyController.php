@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company as C;
 use Illuminate\Http\Request;
+use Validator;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 
@@ -44,6 +45,19 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $company = new C;
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => ['required', 'min:2', 'max:50'],
+            ],
+
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $company -> name = $request-> name;
         $company -> email = $request->email;
         $company -> website = $request->website;
@@ -87,6 +101,18 @@ class CompanyController extends Controller
      */
     public function update(Request $request, C $company)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => ['required', 'min:2', 'max:50'],
+            ],
+
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
             $company->name = $request->name;
             $company -> email = $request->email;
             $company -> website = $request->website;

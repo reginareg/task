@@ -6,6 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
+                    <div class="card-header">
                         <h1>All employees</h1>
                         <div> Sort by:
                             <a href="{{route('cc_index', ['sort' => 'asc'])}}">A to Z</a>

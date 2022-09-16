@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee as E;
 use App\Models\Company as C;
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
@@ -17,6 +18,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        // $companies = C::all();
         $employee = match ($request->sort)
         {
             'asc' => E::orderBy('name', 'asc')->get(),
@@ -45,7 +47,20 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $employee = new E;
-        // $employee ->fill($request->all());
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'first_name' => ['required', 'min:2', 'max:50'],
+                'last_name' => ['required', 'min:2', 'max:50'],
+            ],
+
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $employee -> first_name = $request-> first_name;
         $employee -> last_name = $request-> last_name;
         $employee -> company_id = $request-> company_id;
@@ -86,6 +101,19 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, E $employee)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'first_name' => ['required', 'min:2', 'max:50'],
+                'last_name' => ['required', 'min:2', 'max:50'],
+            ],
+
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $employee -> first_name = $request-> first_name;
         $employee -> last_name = $request-> last_name;
         $employee -> company_id = $request-> company_id;

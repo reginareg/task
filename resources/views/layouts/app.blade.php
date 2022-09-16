@@ -58,8 +58,7 @@
                                     <a class="dropdown-item" href="{{route('cc_index')}}">
                                         List
                                     </a>
-                                    {{-- @if(Auth::user()->role >= 5) --}}
-                                    @if(Auth::user())
+                                    @if(Auth::user()->role >= 9)
                                         <a class="dropdown-item" href="{{route('cc_create')}}">
                                             Add new company
                                         </a>
@@ -75,8 +74,7 @@
                                     <a class="dropdown-item" href="{{route('ec_index')}}">
                                         List
                                     </a>
-                                    @if(Auth::user()->role >= 9)
-                                    {{-- @if(Auth::user()) --}}
+                                    @if(Auth::user())
                                         <a class="dropdown-item" href="{{route('ec_create')}}">
                                             Add new employee
                                         </a>

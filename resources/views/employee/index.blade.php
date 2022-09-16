@@ -4,22 +4,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-            {{-- <div class="card" mb-4>
-              <div class="form-group">
-                <label for="color_id">What employee?</label>
-                <select class="form-select" name="company_id">
-                  @foreach($companies as $company)
-                  <option value="{{$company->id}}">{{$company->name}}</option>
-                  @endforeach
-                </select>
-                <button class="btn btn-outline-primary mt-3" type="submit">Filter</button>
-              </div>
-            </div>
-          </div>  
-                    <div class="card-header"><h4>Filter</h4></div>
-                    <div class="card-body">
-            </div>
-            </div> --}}
+                <div class="col-4">
+                        <div class="form-group">
+                            <label>Filter employee here:</label>
+                            <select class="form-control" name="color_id">
+                                <option value="0" @if($filter==0) selected @endif>No Filter, please</option>
+                                @foreach($companies as $company)
+                                <option value="{{$company->id}}" @if($filter==$company->id) selected @endif>{{$company->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 <div class="card">
                     <div class="card-header">
                     <div class="card-header">

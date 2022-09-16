@@ -18,14 +18,19 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-        // $companies = C::all();
+        $filter = (int) $request->company_id;
+        
+        if ($filter) {$employee = E::where('company_id', $filter)->first();}
+
+        $company = C::all();
+
         $employee = match ($request->sort)
         {
             'asc' => E::orderBy('name', 'asc')->get(),
             'desc' => E::orderBy('name', 'desc')->get(),
             default => E::all()
         };
-        return view('employee.index', ['employees'=> $employee]);
+        return view('employee.index', ['employees'=> $employee, 'companies'=> $company, 'filter'=> $filter]);
     }
 
     /**

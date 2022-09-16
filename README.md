@@ -60,6 +60,30 @@ Start the local development server
 You can now access the server at http://localhost/task/public/employees/login 
 (admin@admin.com password)
 
+## Command list**
+
+    git clone git@github.com:gothinkster/laravel-realworld-example-app.git
+    cd laravel-realworld-example-app
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    php artisan jwt:generate 
+    
+**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+
+    php artisan migrate
+    php artisan serve
+
+## Database seeding
+
+Run the database seeder and you're done
+
+    php artisan db:seed
+
+***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+
+    php artisan migrate:refresh
+
 ## Authors
 
 Regina: [Github](https://github.com/reginareg)

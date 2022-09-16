@@ -10,10 +10,11 @@
                             <select class="form-control" name="color_id">
                                 <option value="0" @if($filter==0) selected @endif>No Filter, please</option>
                                 @foreach($companies as $company)
-                                <option value="{{$company->id}}" @if($filter==$company->id) selected @endif>{{$company->title}}</option>
+                                <option value="{{$company->id}}" @if($filter==$company->id) selected @endif>{{$company->name}}</option>
                                 @endforeach
                             </select>
                         </div>
+                         <button type="submit" class="btn btn-outline-danger m-2">Do it</button>
                     </div>
                 <div class="card">
                     <div class="card-header">

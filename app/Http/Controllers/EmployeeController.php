@@ -18,20 +18,24 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        
         $filter = (int) $request->company_id;
         
-        if ($filter) {$employee = E::where('company_id', $filter)->first();}
+        if ($filter!==0) {$employee = E::where('company_id', $filter)->get();}
+        else {
+            
+            $employee = match ($request->sort)
+            {
+                'asc' => E::orderBy('name', 'asc')->get(),
+                'desc' => E::orderBy('name', 'desc')->get(),
+                default => E::all()
+            };
+        }
 
         $company = C::all();
-
-        $employee = match ($request->sort)
-        {
-            'asc' => E::orderBy('name', 'asc')->get(),
-            'desc' => E::orderBy('name', 'desc')->get(),
-            default => E::all()
-        };
         return view('employee.index', ['employees'=> $employee, 'companies'=> $company, 'filter'=> $filter]);
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -4,6 +4,7 @@ use Illuminate\Support\FaCades\Route;
 use App\Http\Controllers\CompanyController as CC;
 use App\Http\Controllers\EmployeeController as EC;
 use App\Http\Controllers\FrontController as FC;
+use App\Http\Controllers\MailController as MC;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,11 @@ Route::delete('/{employee}', [EC::class, 'destroy'])->name('ec_delete')->middlew
 Route::get('/show/{id}', [EC::class, 'show'])->name('ec_show')->middleware('role:user');
 
 });
+
+// Route::get('companies', 'Api\CompanyController@index');
+// Route::get('companies/{company}', 'Api\CompanyController@show');
+
+// Route::get('/', [MC::class, 'sendMail']);
 
 Auth::routes();
 

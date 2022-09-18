@@ -4,18 +4,19 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form class="col-4" >
+                <form class="col-12" >
                       @csrf
+
                         <div class="form-group">
                             <label>Filter employee here:</label>
                             <select class="form-control" name="company_id">
                                 <option value="0" @if($filter==0) selected @endif>No Filter, please</option>
                                 @foreach($companies as $company)
-                                <option value="{{$company->id}}" @if($filter==$company->id) selected @endif>{{$company->name}}</option>
+                                <label value="{{$company->id}}" @if($filter==$company->id) selected @endif>{{$company->name}}</label>
                                 @endforeach
                             </select>
-                        </div>
                          <button type="submit" class="btn btn-outline-danger m-2">Do it</button>
+                        </div>
                     </form>
                 <div class="card">
                     <div class="card-header">

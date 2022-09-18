@@ -9,6 +9,9 @@ use App\Models\Employee as E;
 
 class Company extends Model
 {
+
+    // protected $fillable = ['name', 'email', 'website'];
+
     use HasFactory;
     public function employee()
     {

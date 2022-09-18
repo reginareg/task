@@ -15,10 +15,10 @@
                             </div>
                             <div class="input-group input-group-sm \ mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">Last name</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="last_name" value="{{old('first_name')}}">*
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="last_name" value="{{old('last_name')}}">*
                             </div>
                             <div class="input-group input-group-sm \ mb-3">
-                                <label for="company_id" class="col-md-4 col-form-label text-md-end">Company</label>
+                                <label>Choose company</label>
                                 <select id="company_id" name="company_id" class="form-select form-select-sm">
                                     @foreach($companies as $company)
                                         <option value="{{$company->id}}">{{$company->name}}</option>

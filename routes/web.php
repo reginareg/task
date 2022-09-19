@@ -5,6 +5,9 @@ use App\Http\Controllers\CompanyController as CC;
 use App\Http\Controllers\EmployeeController as EC;
 use App\Http\Controllers\FrontController as FC;
 use App\Http\Controllers\MailController as MC;
+use App\Http\Resources\CompanyResource as CR;
+use App\Http\Resources\CompanyCollection;
+use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +50,18 @@ Route::get('/show/{id}', [EC::class, 'show'])->name('ec_show')->middleware('role
 
 });
 
-// Route::get('companies', 'Api\CompanyController@index');
-// Route::get('companies/{company}', 'Api\CompanyController@show');
+
+Route::get('/company/{id}', function ($id) {
+    return new CR(Company::findOrFail($id));
+});
+
+// Route::get('/companies', function () {
+//     return CR::collection(Company::all()->keyBy->id);
+// });
+
+Route::get('/companies', function () {
+    return new CompanyCollection(Company::all()->keyBy->id);
+});
 
 // Route::get('/', [MC::class, 'sendMail']);
 

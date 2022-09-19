@@ -11,14 +11,16 @@ class SignUp extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $name;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->$name=$name;
     }
 
     /**
@@ -28,6 +30,6 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        // return $this->view('SignUpView');
+        return $this->from('regina.bogde@gmail.com')->attach('/path/to/file')->cc($moreUsers)->markdown('SignUpView');
     }
 }

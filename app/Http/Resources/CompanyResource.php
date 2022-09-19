@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class CompanyResource extends JsonResource
 {
+    public $preserveKeys = true;
     /**
      * Transform the resource into an array.
      *
@@ -14,12 +15,11 @@ class CompanyResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return [
-        //     'id'=>$this->id,
-        //     'name'=>$this->name,
-        //     'email'=>$this->email,
-        //     'website'=>$this->website
-        // ];
-        return parent::toArray($request);
+        return [
+            'id'=>$this->id,
+            'name'=>$this->name,
+            'email'=>$this->email,
+            'website'=>$this->website
+        ];
     }
 }

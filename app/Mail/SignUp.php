@@ -18,10 +18,10 @@ class SignUp extends Mailable
      *
      * @return void
      */
-    public function __construct($name)
-    {
-        $this->$name=$name;
-    }
+    // public function __construct($name)
+    // {
+    //     $this->$name=$name;
+    // }
 
     /**
      * Build the message.
@@ -30,6 +30,6 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        return $this->from('regina.bogde@gmail.com')->attach('/path/to/file')->cc($moreUsers)->markdown('SignUpView');
+        // return $this->from('regina.bogde@gmail.com')->attach('/path/to/file')->cc($moreUsers)->markdown('SignUpView');
     }
 }

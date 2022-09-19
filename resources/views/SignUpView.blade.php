@@ -1,4 +1,4 @@
-@component('mail::message')
+{{-- @component('mail::message')
 
 Sign Up here {{ $name }}
 
@@ -6,4 +6,4 @@ Sign Up here {{ $name }}
    Click here
 @endcomponent
 
-@endcomponent
+@endcomponent --}}

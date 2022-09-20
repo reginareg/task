@@ -26,6 +26,20 @@ Route::get('/', [FC::class, 'index'])->name('fc_index');
 
 Route::prefix('companies')->group(function () {
 
+
+// Route::resource('/', CC::class. ['names'=>[
+//         'index' => 'cc_index',
+//         'create' => 'cc_create',
+//         'store' => 'cc_store',
+//         'update' => 'cc_update',
+//     ]]) ->middleware('role:admin'); 
+    
+// Route::resource('/show', CC::class, ['names'=>[
+//         'show'=> 'cc_show']])->middleware('role:user');
+// Route::resource('/edit', CC::class, ['names'=>[
+//         'edit'=> 'cc_edit',]])->middleware('role:user');
+
+
 Route::get('/', [CC::class, 'index'])->name('cc_index')->middleware('role:user');
 Route::get('/create', [CC::class, 'create'])->name('cc_create')->middleware('role:admin');
 Route::post('/store', [CC::class, 'store'])->name('cc_store')->middleware('role:admin');
@@ -38,6 +52,18 @@ Route::get('/show/{id}', [CC::class, 'show'])->name('cc_show')->middleware('role
 
 Route::prefix('employees')->group(function () {
 
+// Route::resource('/', EC::class. ['names'=>[
+//         'index' => 'ec_index',
+//         'create' => 'ec_create',
+//         'store' => 'ec_store',
+//         'update' => 'ec_update',
+//     ]]) ->middleware('role:admin'); 
+    
+// Route::resource('/show', CC::class, ['names'=>[
+//         'show'=> 'ec_show']])->middleware('role:user');
+// Route::resource('/edit', CC::class, ['names'=>[
+//         'edit'=> 'ec_edit',]])->middleware('role:user');
+
 Route::get('/', [EC::class, 'index'])->name('ec_index')->middleware('role:admin');
 Route::get('/create', [EC::class, 'create'])->name('ec_create')->middleware('role:user');
 Route::post('/store', [EC::class, 'store'])->name('ec_store')->middleware('role:admin');
@@ -48,23 +74,6 @@ Route::get('/show/{id}', [EC::class, 'show'])->name('ec_show')->middleware('role
 
 });
 
-// -----API-----
-
-Route::prefix('companies')->group(function () {
-
-Route::resource('/', CC::class. ['names'=>[
-    'index' => 'cc_index',
-    'create' => 'cc_create',
-    'store' => 'cc_store',
-    'update' => 'cc_update',
-]]) ->middleware('role:admin'); 
-
-Route::resource('/show', CC::class, ['names'=>[
-    'show'=> 'cc_show']])->middleware('role:user');
-Route::resource('/edit', CC::class, ['names'=>[
-    'edit'=> 'cc_edit',]])->middleware('role:user');
-
-});    
 
 Auth::routes();
 

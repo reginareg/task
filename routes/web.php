@@ -64,7 +64,7 @@ Route::resource('/show', CC::class, ['names'=>[
 Route::resource('/edit', CC::class, ['names'=>[
     'edit'=> 'cc_edit',]])->middleware('role:user');
 
-}    
+});    
 
 Auth::routes();
 

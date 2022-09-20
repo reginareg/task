@@ -48,9 +48,9 @@ Route::get('/show/{id}', [EC::class, 'show'])->name('ec_show')->middleware('role
 
 });
 
-Route::prefix('companies')->grout(function () {
-
 // -----API-----
+
+Route::prefix('companies')->group(function () {
 
 Route::resource('/', CC::class. ['names'=>[
     'index' => 'cc_index',
@@ -63,6 +63,8 @@ Route::resource('/show', CC::class, ['names'=>[
     'show'=> 'cc_show']])->middleware('role:user');
 Route::resource('/edit', CC::class, ['names'=>[
     'edit'=> 'cc_edit',]])->middleware('role:user');
+
+}    
 
 Auth::routes();
 

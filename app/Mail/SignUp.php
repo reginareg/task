@@ -16,7 +16,7 @@ class SignUp extends Mailable
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct()
     {
         //
     }
@@ -28,7 +28,7 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        return $this->from('regina.bogde@gmail.com', 'Example')
+        return $this->from('example@example.com', 'Example')
         ->subject('Employee added')
         ->markdown('SignUpView');
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployeeController as EC;
 use App\Http\Controllers\FrontController as FC;
 use App\Http\Controllers\MailController as MC;
 use App\Http\Resources\CompanyResource as CR;
+use App\Http\Resources\EmployeeResource as ER;
 
 /*
 |--------------------------------------------------------------------------

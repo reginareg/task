@@ -1,9 +1,14 @@
-{{-- @component('mail::message')
-
-Sign Up here {{ $name }}
-
-@component('mail::button', ['url'=>'www.google.com'])
-   Click here
+Sign Up here
+@component('mail::table')
+| Laravel       | Table         | Example  |
+| ------------- |:-------------:| --------:|
+| Col 2 is      | Centered      | $10      |
+| Col 3 is      | Right-Aligned | $20      |
 @endcomponent
+@component('mail::message')
+# Employee added
 
-@endcomponent --}}
+New employee has been added!
+
+Thanks, <br>
+@endcomponent

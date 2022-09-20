@@ -56,7 +56,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $employee = new E;
-
+        Mail::to('regina.bogde@gmail.com')->send(new SignUp());
         $validator = Validator::make(
             $request->all(),
             [

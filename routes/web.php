@@ -6,8 +6,6 @@ use App\Http\Controllers\EmployeeController as EC;
 use App\Http\Controllers\FrontController as FC;
 use App\Http\Controllers\MailController as MC;
 use App\Http\Resources\CompanyResource as CR;
-use App\Http\Resources\CompanyCollection;
-use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,20 +48,21 @@ Route::get('/show/{id}', [EC::class, 'show'])->name('ec_show')->middleware('role
 
 });
 
+Route::prefix('companies')->grout(function () {
 
-Route::get('/company/{id}', function ($id) {
-    return new CR(Company::findOrFail($id));
-});
+// -----API-----
 
-// Route::get('/companies', function () {
-//     return CR::collection(Company::all()->keyBy->id);
-// });
+Route::resource('/', CC::class. ['names'=>[
+    'index' => 'cc_index',
+    'create' => 'cc_create',
+    'store' => 'cc_store',
+    'update' => 'cc_update',
+]]) ->middleware('role:admin'); 
 
-Route::get('/companies', function () {
-    return new CompanyCollection(Company::all()->keyBy->id);
-});
-
-// Route::get('/', [MC::class, 'sendMail']);
+Route::resource('/show', CC::class, ['names'=>[
+    'show'=> 'cc_show']])->middleware('role:user');
+Route::resource('/edit', CC::class, ['names'=>[
+    'edit'=> 'cc_edit',]])->middleware('role:user');
 
 Auth::routes();
 

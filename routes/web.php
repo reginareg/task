@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\FaCades\Route;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController as CC;
 use App\Http\Controllers\EmployeeController as EC;
 use App\Http\Controllers\FrontController as FC;
-use App\Http\Controllers\MailController as MC;
 use App\Http\Resources\CompanyResource as CR;
 use App\Http\Resources\EmployeeResource as ER;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,7 @@ Route::get('/show/{id}', [EC::class, 'show'])->name('ec_show')->middleware('role
 
 });
 
+Route::get('/', [EC::class, 'sendMail']);
 
 Auth::routes();
 

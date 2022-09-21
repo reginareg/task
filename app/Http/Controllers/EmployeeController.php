@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee as E;
 use App\Models\Company as C;
 use Validator;
+use App\Mail\SignUp;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
